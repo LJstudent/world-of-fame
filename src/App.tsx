@@ -1,13 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Main from './components/main/Main';
 import Topbar from './components/topbar/Topbar';
 
 
 function App() {
   return (
-    <div> 
+    <div>
       <Topbar />
+      <Main />
     </div>
     // <div className="App">
     //   <header className="App-header">

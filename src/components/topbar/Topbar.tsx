@@ -29,7 +29,7 @@ function Topbar() {
     };
 
     return (
-        <AppBar position="fixed">
+        <AppBar position="static">
             <Toolbar className="Toolbar">
                 <img src={logo} alt="logo" className="logo" />
                 <Input

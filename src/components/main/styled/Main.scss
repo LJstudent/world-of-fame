@@ -1,0 +1,25 @@
+.Main-Grid {
+    margin-left: 100px;
+    margin-right: 65px;
+    margin-top: 100px;
+}
+
+.Header-Grid {
+    text-align: left;
+    font: normal normal bold 42px/45px Filson Pro;
+    letter-spacing: 0px;
+    color: #111111;
+    margin-bottom: 50px;
+}
+
+.Image-Grid {
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+    .Main-Grid {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 50px;
+    }
+}
