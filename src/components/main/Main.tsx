@@ -1,11 +1,25 @@
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import React from 'react';
 import { itemData } from '../../data/examples/imagedata';
 import Achievement from '../achievement/Achievement';
 import './styled/Main.scss';
 
 function Main() {
+    const [AchievementId, setAchievementId] = React.useState<number>(0);
+    const [ShowAchievementCard, setShowAchievementCard] = React.useState<boolean>(false);
+
+    const handleShowAchievementCard = (AchievementId: number) => {
+        setAchievementId(AchievementId);
+        setShowAchievementCard(true)
+    };
+
+    const handleShowAchievementCardClose = () => {
+        setAchievementId(0);
+        setShowAchievementCard(false)
+      };
+
     return (
         <div className="Main-Grid">
             <h1 className="Header-Grid">Wall of fame.</h1>
@@ -22,7 +36,7 @@ function Main() {
                     }}
                     gap={8}>
                     {itemData.map((item) => (
-                        <ImageListItem key={item.id}>
+                        <ImageListItem key={item.id} onClick={event => handleShowAchievementCard(item.id)}>
                             <img
                                 src={`${item.img}?w=248&fit=crop&auto=format`}
                                 srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
@@ -34,7 +48,7 @@ function Main() {
                     ))}
                 </ImageList>
             </Box>
-            <Achievement />
+            <Achievement AchievementId={AchievementId} open={ShowAchievementCard} onClose={handleShowAchievementCardClose} />
         </div>
     );
 }

@@ -1,5 +1,6 @@
 .Card-Dialog {
-    margin-top: 150px;
+    margin-top: 50px;
+    position: fixed;
 }
 
 .Card-Button-Group {
@@ -55,6 +56,7 @@
 .Card-H2 {
     color: #35CBBF;
     margin-bottom: -20px;
+    margin-top: 0px;
 }
 
 @media only screen and (max-width: 600px) {

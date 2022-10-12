@@ -8,17 +8,30 @@ import Dialog from '@mui/material/Dialog';
 import { itemData } from '../../data/examples/imagedata';
 import './styled/Achievement.scss';
 
-function Achievement() {
+interface IOuterProps {
+    AchievementId: number;
+    open: boolean;
+    onClose: (handleShowAchievementCardClose: boolean) => void;
+}
+
+function Achievement(props: IOuterProps) {
+    const { AchievementId, open, onClose } = props;
+
+    const handleClose = () => {
+        onClose(false);
+      };
+
     return (
         <Dialog
-            open={true}
+            open={open}
+            onClose={handleClose}
             keepMounted
             aria-describedby="alert-dialog-slide-description"
             className="Card-Dialog"
         >
             <div>
                 {itemData
-                    .filter(item => item.id === 5)
+                    .filter(item => item.id === AchievementId)
                     .map(item => {
                         return (
                             < Card sx={{ width: { xs: 315, sm: 450, md: 500 }, height: "auto" }} >
