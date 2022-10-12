@@ -11,14 +11,14 @@ import './styled/Achievement.scss';
 interface IOuterProps {
     AchievementId: number;
     open: boolean;
-    onClose: (handleShowAchievementCardClose: boolean) => void;
+    onClose: () => void;
 }
 
 function Achievement(props: IOuterProps) {
     const { AchievementId, open, onClose } = props;
 
     const handleClose = () => {
-        onClose(false);
+        onClose();
       };
 
     return (
