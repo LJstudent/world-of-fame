@@ -12,12 +12,12 @@ function Main() {
 
     const handleShowAchievementCard = (AchievementId: number) => {
         setAchievementId(AchievementId);
-        setShowAchievementCard(true)
+        setShowAchievementCard(true);
     };
 
     const handleShowAchievementCardClose = () => {
         setAchievementId(0);
-        setShowAchievementCard(false)
+        setShowAchievementCard(false);
       };
 
     return (
