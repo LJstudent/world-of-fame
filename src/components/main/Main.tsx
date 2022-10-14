@@ -2,11 +2,14 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { itemData } from '../../data/examples/imagedata';
+import { RootState } from '../../state/store';
 import Achievement from '../achievement/Achievement';
 import './styled/Main.scss';
 
 function Main() {
+    const searchFilter = useSelector((state: RootState) => state.searchFilter.value);
     const [AchievementId, setAchievementId] = React.useState<number>(0);
     const [ShowAchievementCard, setShowAchievementCard] = React.useState<boolean>(false);
 
@@ -18,7 +21,9 @@ function Main() {
     const handleShowAchievementCardClose = () => {
         setAchievementId(0);
         setShowAchievementCard(false);
-      };
+    };
+
+    const results = itemData.filter(item => item.title.indexOf(searchFilter) !== -1);
 
     return (
         <div className="Main-Grid">
@@ -35,17 +40,19 @@ function Main() {
                         }
                     }}
                     gap={8}>
-                    {itemData.map((item) => (
-                        <ImageListItem key={item.id} onClick={event => handleShowAchievementCard(item.id)}>
-                            <img
-                                src={`${item.img}?w=248&fit=crop&auto=format`}
-                                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                alt={item.title}
-                                loading="lazy"
-                                className="Image-Grid"
-                            />
-                        </ImageListItem>
-                    ))}
+                    {results.length >= 1 ?
+                        results.map((item) => (
+                            <ImageListItem key={item.id} onClick={event => handleShowAchievementCard(item.id)}>
+                                <img
+                                    src={`${item.img}?w=248&fit=crop&auto=format`}
+                                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                    alt={item.title}
+                                    loading="lazy"
+                                    className="Image-Grid"
+                                />
+                            </ImageListItem>
+                        )
+                        ) : <p>No resuts, try again</p>}
                 </ImageList>
             </Box>
             <Achievement AchievementId={AchievementId} open={ShowAchievementCard} onClose={handleShowAchievementCardClose} />

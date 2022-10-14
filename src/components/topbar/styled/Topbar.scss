@@ -1,5 +1,6 @@
 $padding: 20px;
 $margin-right: 20px;
+$icon-color: #A3A3A3;
 
 .Toolbar {
     padding: $padding;
@@ -27,11 +28,11 @@ $margin-right: 20px;
 }
 
 .Search-Icon {
-    color: #A3A3A3;
+    color: $icon-color
 }
 
 .Icon {
-    color: #A3A3A3;
+    color: $icon-color;
     margin-right: $padding;
 }
 

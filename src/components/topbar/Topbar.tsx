@@ -3,6 +3,7 @@ import Input from '@mui/material/Input';
 import InputAdornment from '@mui/material/InputAdornment';
 import Toolbar from '@mui/material/Toolbar';
 import SearchIcon from '@mui/icons-material/Search'
+import ClearIcon from '@mui/icons-material/Clear';
 import './styled/Topbar.scss';
 import IconButton from '@mui/material/IconButton';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -15,10 +16,15 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import logo from '../../data/images/nobears.png'
+import { useDispatch } from 'react-redux';
+import { clearField, searchFilter } from '../../state/searchFilter/searchFilterSlice';
 
 
 function Topbar() {
+    const dispatch = useDispatch();
+
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [inputSearchBar, setInputSearchBar] = React.useState<string>("");
 
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
@@ -27,6 +33,25 @@ function Topbar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const handleInputSearchBar = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInputSearchBar(event.target.value);
+    };
+
+    const handleSearch = () => {
+        dispatch(searchFilter(inputSearchBar.toLocaleLowerCase()));
+    };
+
+    const handleKeyEvent = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            dispatch(searchFilter(inputSearchBar.toLocaleLowerCase()));
+        };
+    }
+
+    const handleClearSearch = () => {
+        setInputSearchBar("");
+        dispatch(clearField());
+    }
 
     return (
         <AppBar position="static">
@@ -37,13 +62,24 @@ function Topbar() {
                     disableUnderline={true}
                     placeholder="Zoeken"
                     className="Search-Input"
-                    sx={{ color: '#A3A3A3'}} // override manual not working in scss
+                    sx={{ color: '#A3A3A3' }} // override manual not working in scss
+                    onChange={handleInputSearchBar}
+                    onKeyDown={handleKeyEvent}
+                    value={inputSearchBar}
                     startAdornment={
                         <InputAdornment position="start">
-                            <IconButton aria-label="upload-picture" component="label">
+                            <IconButton onClick={handleSearch} aria-label="upload-picture" component="label">
                                 <SearchIcon className="Search-Icon" />
                             </IconButton>
                         </InputAdornment>
+                    }
+                    endAdornment={inputSearchBar.length >= 1 ?
+                        <InputAdornment position="start">
+                            <IconButton onClick={handleClearSearch} aria-label="upload-picture" component="label">
+                                <ClearIcon className="Search-Icon" />
+                            </IconButton>
+                        </InputAdornment>
+                        : null
                     }
                 />
                 <ChatIcon sx={{ fontSize: { xs: '27px', md: '33px' } }} className="Icon" />
