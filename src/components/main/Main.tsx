@@ -5,6 +5,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import Achievement from '../achievement/Achievement';
+import CreateAchievement from '../achievement/CreateAchievement';
 import './styled/Main.scss';
 
 function Main() {
@@ -56,6 +57,7 @@ function Main() {
                 </ImageList>
             </Box>
             <Achievement AchievementId={AchievementId} open={ShowAchievementCard} onClose={handleShowAchievementCardClose} />
+            <CreateAchievement />
         </div>
     );
 }

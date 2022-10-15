@@ -18,6 +18,7 @@ import React from 'react';
 import logo from '../../data/images/nobears.png'
 import { useDispatch } from 'react-redux';
 import { clearField, searchFilter } from '../../state/searchFilter/searchFilterSlice';
+import { newRecord } from '../../state/list/listSlice';
 
 
 function Topbar() {
@@ -31,6 +32,11 @@ function Topbar() {
     };
 
     const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
+    const handleNewRecord = () => {
+        dispatch(newRecord());
         setAnchorElUser(null);
     };
 
@@ -106,7 +112,7 @@ function Topbar() {
                         open={Boolean(anchorElUser)}
                         onClose={handleCloseUserMenu}
                     >
-                        <MenuItem onClick={handleCloseUserMenu}>
+                        <MenuItem onClick={handleNewRecord}>
                             <Typography textAlign="center">New Achievment</Typography>
                         </MenuItem>
                     </Menu>

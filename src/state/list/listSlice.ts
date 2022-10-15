@@ -4,7 +4,7 @@ import { IList } from '../../models/interfaces/IList';
 import { itemData } from '../../data/examples/imagedata';
 
 export interface IListState {
-  list :  IList[];
+  list: IList[];
   newRecord: boolean;
 }
 
@@ -19,11 +19,15 @@ export const listSlice = createSlice({
   reducers: {
     addItem: (state, action: PayloadAction<IList>) => {
       state.list.push(action.payload)
+      state.newRecord = false;
+    },
+    newRecord: (state) => {
+      state.newRecord = true;
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addItem } = listSlice.actions
+export const { addItem, newRecord } = listSlice.actions
 
 export default listSlice.reducer
