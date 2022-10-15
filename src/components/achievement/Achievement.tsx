@@ -5,7 +5,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Dialog from '@mui/material/Dialog';
-import { itemData } from '../../data/examples/imagedata';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 import './styled/Achievement.scss';
 
 interface IOuterProps {
@@ -16,6 +17,8 @@ interface IOuterProps {
 
 function Achievement(props: IOuterProps) {
     const { AchievementId, open, onClose } = props;
+    const list = useSelector((state: RootState) => state.list.list);
+
 
     const handleClose = () => {
         onClose();
@@ -30,7 +33,7 @@ function Achievement(props: IOuterProps) {
             className="Card-Dialog"
         >
             <div>
-                {itemData
+                {list
                     .filter(item => item.id === AchievementId)
                     .map(item => {
                         return (

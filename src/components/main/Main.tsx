@@ -3,13 +3,13 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { itemData } from '../../data/examples/imagedata';
 import { RootState } from '../../state/store';
 import Achievement from '../achievement/Achievement';
 import './styled/Main.scss';
 
 function Main() {
     const searchFilter = useSelector((state: RootState) => state.searchFilter.value);
+    const list = useSelector((state: RootState) => state.list.list);
     const [AchievementId, setAchievementId] = React.useState<number>(0);
     const [ShowAchievementCard, setShowAchievementCard] = React.useState<boolean>(false);
 
@@ -23,7 +23,7 @@ function Main() {
         setShowAchievementCard(false);
     };
 
-    const results = itemData.filter(item => item.title.indexOf(searchFilter) !== -1);
+    const results = list.filter(item => item.title.indexOf(searchFilter) !== -1);
 
     return (
         <div className="Main-Grid">

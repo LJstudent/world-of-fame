@@ -1,4 +1,6 @@
-export const itemData = [
+import { IList } from "../../models/interfaces/IList";
+
+export const itemData: IList[] = [
   {
     id: 1,
     img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
