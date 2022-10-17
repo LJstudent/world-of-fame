@@ -16,41 +16,25 @@
 
 .Card-Button {
     float: right;
-    appearance: button;
-    backface-visibility: hidden;
     background-color: #35CBBF;
     border-radius: 10px;
     border-width: 0;
-    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    font-family: "Filson Pro";
     font-weight: bold;
     font-size: 22px;
     height: 44px;
     line-height: 1.15;
     margin: 0px 10px 10px;
-    outline: none;
-    overflow: hidden;
     padding: 0 25px;
-    position: relative;
     text-align: center;
-    text-transform: none;
-    transform: translateZ(0);
-    transition: all .2s, box-shadow .08s ease-in;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
     width: 200px;
-}
 
-.Card-Button:hover {
-    transform: translateY(-1px);
-}
-
-.Card-Button:focus {
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    &:active {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 }
 
 .Card-H2 {
