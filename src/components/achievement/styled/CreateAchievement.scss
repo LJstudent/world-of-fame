@@ -1,0 +1,65 @@
+.Card-Dialog {
+    margin-top: 50px;
+    position: fixed;
+}
+
+.card-form {
+    padding: 40px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    padding-top: 25px;
+
+    &+.input {
+        margin-top: 25px;
+    }
+}
+
+.input-label {
+    color: #8597a3;
+    position: absolute;
+    top: 1.5rem;
+    transition: .25s ease;
+}
+
+.input-field {
+    border: 0;
+    z-index: 1;
+    background-color: transparent;
+    border-bottom: 2px solid #eee;
+    font: inherit;
+    font-size: 20px;
+
+    &:focus {
+        outline: 0;
+        border-bottom-color: #6658d3;
+
+        &+.input-label {
+            color: #6658d3;
+            transform: translateY(-1.5rem);
+        }
+    }
+}
+
+.action {
+    margin-top: 30px;
+}
+
+.action-button {
+    font: inherit;
+    font-size: 20px;
+    padding: 15px;
+    width: 100%;
+    font-weight: 500;
+    background-color: #6658d3;
+    border-radius: 30px;
+    color: #FFF;
+    border: 0;
+
+    &:focus {
+        outline: 0;
+    }
+}   
