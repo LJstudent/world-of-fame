@@ -3,29 +3,34 @@
     position: fixed;
 }
 
-.card-form {
+.Card-Form {
     padding: 40px;
 }
 
-.input {
+.Input {
     display: flex;
     flex-direction: column-reverse;
     position: relative;
     padding-top: 25px;
 
-    &+.input {
+    &+.Input {
         margin-top: 25px;
     }
 }
 
-.input-label {
+.Input-Label {
     color: #8597a3;
     position: absolute;
     top: 1.5rem;
     transition: .25s ease;
 }
 
-.input-field {
+.Input-Label-Focus {
+    top: 0px;
+    position: absolute;
+}
+
+.Input-Field {
     border: 0;
     z-index: 1;
     background-color: transparent;
@@ -37,24 +42,35 @@
         outline: 0;
         border-bottom-color: #6658d3;
 
-        &+.input-label {
+        &+.Input-Label {
             color: #6658d3;
             transform: translateY(-1.5rem);
         }
+
+        &+.Input-Label-Focus {
+            color: #6658d3;
+        }
+
     }
 }
 
-.action {
+.Input-Error {
+    color: red;
+    margin: 10px 0px 10px 0px;
+}
+
+.Action {
     margin-top: 30px;
 }
 
-.action-button {
-    font: inherit;
+.Action-Button {
+    cursor: pointer;
     font-size: 20px;
     padding: 15px;
     width: 100%;
-    font-weight: 500;
-    background-color: #6658d3;
+    font-weight: bold;
+    background-color: #35CBBF;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
     color: #FFF;
     border: 0;
@@ -62,4 +78,8 @@
     &:focus {
         outline: 0;
     }
-}   
+
+    &:active {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+}
