@@ -75,9 +75,23 @@
     color: #FFF;
     border: 0;
 
-    &:focus,
     &:active {
         outline: 0;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
+}
+
+.Cancel {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Cancel-Button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #8597a3;
+    text-decoration: underline;
 }

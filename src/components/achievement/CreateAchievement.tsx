@@ -5,7 +5,7 @@ import { RootState } from '../../state/store';
 import './styled/CreateAchievement.scss';
 import * as yup from 'yup';
 import { Formik, FormikHelpers } from "formik";
-import { addItem } from "../../state/list/listSlice";
+import { addItem, cancelRecord } from "../../state/list/listSlice";
 
 function CreateAchievement() {
     const dispatch = useDispatch();
@@ -51,6 +51,12 @@ function CreateAchievement() {
         },
     };
 
+    // @ts-ignore
+    const handleCloseCreate = (resetForm) => {
+        resetForm();
+        dispatch(cancelRecord());
+    };
+
     return (
         <Dialog
             open={open}
@@ -65,6 +71,7 @@ function CreateAchievement() {
                     errors,
                     handleSubmit,
                     touched,
+                    resetForm
                 }) => {
                     const titleValue = values.title !== "" && true;
                     const imgValue = values.img !== "" && true;
@@ -95,7 +102,10 @@ function CreateAchievement() {
                             </div>
                             {errors.img && touched.img ? (<div className="Input-Error">{errors.img}</div>) : null}
                             <div className="Action">
-                                <button className="Action-Button">Zet erbij</button>
+                                <button type="submit" className="Action-Button">Zet erbij</button>
+                            </div>
+                            <div className="Cancel">
+                                <button type="reset" className="Cancel-Button" onClick={(event) => handleCloseCreate(resetForm)}>Cancel</button>
                             </div>
                         </form>
                     )

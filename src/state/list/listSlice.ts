@@ -24,10 +24,13 @@ export const listSlice = createSlice({
     newRecord: (state) => {
       state.newRecord = true;
     },
+    cancelRecord: (state) => {
+      state.newRecord = false;
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addItem, newRecord } = listSlice.actions
+export const { addItem, newRecord, cancelRecord } = listSlice.actions
 
 export default listSlice.reducer
