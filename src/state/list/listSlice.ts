@@ -18,7 +18,7 @@ export const listSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<IList>) => {
-      state.list.push(action.payload)
+      state.list.push(action.payload);
       state.newRecord = false;
     },
     newRecord: (state) => {
