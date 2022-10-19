@@ -35,7 +35,7 @@ function Achievement(props: IOuterProps) {
                     const url = window.URL.createObjectURL(new Blob([buffer]));
                     const link = document.createElement("a");
                     link.href = url;
-                    link.setAttribute("download", `${imgTitle}.jpg`); //or any other extension
+                    link.setAttribute("download", `${imgTitle}.jpg`);
                     document.body.appendChild(link);
                     link.click();
                 });
