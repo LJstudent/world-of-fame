@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Dialog from '@mui/material/Dialog';
+import IconButton from '@mui/material/IconButton';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import './styled/Achievement.scss';
@@ -24,6 +25,26 @@ function Achievement(props: IOuterProps) {
         onClose();
     };
 
+    const handleDownload = (imgLink: string, imgTitle: string) => {
+        fetch(imgLink, {
+            method: "GET",
+            headers: {}
+        })
+            .then(response => {
+                response.arrayBuffer().then(function (buffer) {
+                    const url = window.URL.createObjectURL(new Blob([buffer]));
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.setAttribute("download", `${imgTitle}.jpg`); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     return (
         <Dialog
             open={open}
@@ -41,7 +62,9 @@ function Achievement(props: IOuterProps) {
                                 <div className="Card-Button-Group">
                                     <MoreHorizIcon sx={{ fontSize: { xs: '27px', md: '33px' } }} className="Card-Icon" />
                                     <FavoriteIcon sx={{ fontSize: { xs: '27px', md: '33px' } }} className="Card-Icon" />
-                                    <DownloadIcon sx={{ fontSize: { xs: '27px', md: '33px' } }} className="Card-Icon" />
+                                    <IconButton sx={{ mt: '4px' }} onClick={event => handleDownload(item.img, item.title)}>
+                                        <DownloadIcon sx={{ fontSize: { xs: '27px', md: '33px' }, color: '#A3A3A3' }} />
+                                    </IconButton>
                                     <button className="Card-Button">Bewaren</button>
                                 </div>
                                 <CardMedia
