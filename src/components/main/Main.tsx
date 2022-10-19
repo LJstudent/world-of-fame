@@ -29,7 +29,7 @@ function Main() {
     return (
         <div className="Main-Grid">
             <h1 className="Header-Grid">Wall of fame.</h1>
-            <Box sx={{ flex: 1, height: 450 }}>
+            <Box sx={{ flex: 1 }}>
                 <ImageList variant="masonry"
                     sx={{
                         columnCount: {
